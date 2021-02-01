@@ -1,0 +1,11 @@
+.container {
+  text-align: left;
+
+  .card {
+    min-width: 25%;
+
+    .mat-form-field {
+        font-size: 16;
+    }
+  }
+}

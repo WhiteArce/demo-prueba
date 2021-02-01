@@ -3,20 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'; 
 import { HomeComponent } from './home/home.component';
 import { AddPersonComponent } from './add-person/add-person.component';
 import { ListPersonsComponent } from './list-persons/list-persons.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatFormModule, MatInputModule} from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
-const modules = [
-  MatButtonModule,
-  MatFormModule,
-  MatInputModule
-]
 @NgModule({
   declarations: [
     AppComponent,
+    FormsModule,
+    HttpClientModule,
     HomeComponent,
     AddPersonComponent,
     ListPersonsComponent
@@ -24,9 +23,9 @@ const modules = [
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    BrowserAnimationsModule,
+    MaterialModule
   ],
-  exports:
   providers: [],
   bootstrap: [AppComponent]
 })
