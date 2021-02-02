@@ -2,7 +2,9 @@ const databaseConfig = {
   HOST: "localhost",
   USER: "root",
   DB: "personasdb",
-  dialect: "mysql",
+  DIALECT: "mysql",
+  PORT: 3306,
+  PASSWORD: '',
   pool: {
     max: 5,
     min: 0,
