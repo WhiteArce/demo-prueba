@@ -1,23 +1,11 @@
-const { sequelize, Sequelize } = require(".");
-
 module.exports = (sequelize, Sequelize) => {
-    const Persona = sequelize.define("persona", {
-        nombre: {
-            type: Sequelize.STRING
-        },
-        apellidoP: {
-            type: Sequelize.STRING
-        },
-        ApellidoM: {
-            type: Sequelize.STRING
-        },
-        direccion: {
-            type: Sequelize.STRING
-        },
-        telefono: {
-            type: Sequelize.STRING
-        }
-    });
+  let Persona = sequelize.define('personas', {
+    nombre: Sequelize.STRING,
+    apellidoP: Sequelize.STRING,
+    apellidoM: Sequelize.STRING,
+    direccion: Sequelize.STRING,
+    telefono: Sequelize.STRING
+  });
 
-    return Persona;
+  return Persona;
 };

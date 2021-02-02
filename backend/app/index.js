@@ -3,12 +3,12 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const router = express.Router();
-const db = require('./models');
-db.sequelize.sync();
+
+require('./routes/persona.routes')(app);
 
 
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: "http://localhost:8080",
 };
 
 app.use(cors(corsOptions));
@@ -18,6 +18,8 @@ app.use(bodyParser.json());
 app.use("/home", router);
 app.use(bodyParser.urlencoded({extended: true}));
 
+const db = require('./models');
+db.sequelize.sync();
 
 // simple route
 router.get("/", (req, res) => {
@@ -25,7 +27,7 @@ router.get("/", (req, res) => {
 });
 
 // set port, listen for requests
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
