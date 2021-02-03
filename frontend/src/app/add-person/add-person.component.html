@@ -1,30 +1,47 @@
 <div class="container">
-    <mat-card class="card">
-        <mat-card-title>Registro de personas</mat-card-title>
-        <hr>
-        <mat-card-content>
-            <form>
-                <mat-form-field>
-                    <mat-label>Ingrese nombre </mat-label>
-                    <input matInput placeholder="Ej: Juan">
-                </mat-form-field><br>
-                <mat-form-field>
-                    <mat-label>Ingrese apellido paterno</mat-label>
-                    <input matInput placeholder="Ej: Dominguez">
-                </mat-form-field><br>
-                <mat-form-field>
-                    <mat-label>Ingrese apellido materno</mat-label>
-                    <input matInput placeholder="Ej: Castelo">
-                </mat-form-field><br>
-                <mat-form-field>
-                    <mat-label>Ingrese direccion</mat-label>
-                    <input matInput placeholder="Ej: calle de los robles #234">
-                </mat-form-field><br>
-                <mat-form-field>
-                    <mat-label>Ingrese telefono</mat-label>
-                    <input matInput placeholder="Ej: 6649675720">
-                </mat-form-field>
-            </form>
-        </mat-card-content>
-    </mat-card>
+   <!-- Button trigger modal -->
+<button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+   Agregar persona
+ </button>
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Agregar persona</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <form>
+            <div class="mb-3">
+               <label for="name">Nombre</label>
+               <input type="text" class="form-control" id="name" placeholder="Julian" required #nombre>
+            </div>
+            <div class="mb-3">
+               <label for="apellidoPat">Apellido paterno</label>
+               <input type="text" class="form-control" id="apellidoPat" placeholder="Montes" required #apellidoP>
+            </div>
+            <div class="mb-3">
+               <label for="apellidoM">Apellido materno</label>
+               <input type="text" class="form-control" id="apellidoM" placeholder="Escalante" required #apellidoM>
+            </div>
+            <div class="mb-3">
+               <label for="address">Direccion</label>
+               <input type="text" class="form-control" id="address" placeholder="Avenida principal #700, col. centro" required #direccion>
+            </div>
+            <div class="mb-3">
+               <label for="phone">Telefono</label>
+               <input type="text" class="form-control" id="phone" placeholder="4268531973" required #telefono>
+            </div>
+         </form>
+       </div>
+       <div class="modal-footer">
+         <button class="btn btn-success" (click)="addPerson(nombre.value, apellidoP.value, apellidoM.value, direccion.value, telefono.value)" data-bs-dismiss="modal">Guardar </button>
+         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+        
+       </div>
+     </div>
+   </div>
+ </div>
 </div>

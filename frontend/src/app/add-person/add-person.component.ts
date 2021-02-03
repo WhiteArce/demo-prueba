@@ -1,22 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { Task } from '../tasks/task.model';
+import { Store } from '@ngrx/store';
+import { AppState } from '../app.state';
+import * as PersonaActions from '../store/personas.actions';
 
 @Component({
   selector: 'app-add-person',
   templateUrl: './add-person.component.html',
-  styleUrls: ['./add-person.component.scss']
+  styleUrls: ['./add-person.component.scss'],
 })
 export class AddPersonComponent implements OnInit {
+  constructor(private store: Store<AppState>) {}
 
-  personas: Task[] = [];
-  
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  addPerson(
+    nombre: string,
+    apellidoP: string,
+    apellidoM: string,
+    direccion: string,
+    telefono: string
+  ) {
+    this.store.dispatch(
+      new PersonaActions.AddPersona({
+        nombre: nombre,
+        apellidoP: apellidoP,
+        apellidoM: apellidoM,
+        direccion: direccion,
+        telefono: telefono,
+      })
+    );
   }
-
-  addPerson(persona: Task){
-    this.personas.push(persona);
-  }
-
 }

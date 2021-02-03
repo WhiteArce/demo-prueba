@@ -8,23 +8,22 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AddPersonComponent } from './add-person/add-person.component';
 import { ListPersonsComponent } from './list-persons/list-persons.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialModule } from './material.module';
+import { StoreModule } from '@ngrx/store';
+import { personaReducer } from './store/personas.reducer';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormsModule,
-    HttpClientModule,
     HomeComponent,
     AddPersonComponent,
     ListPersonsComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MaterialModule
+    StoreModule.forRoot({personas: personaReducer}),
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

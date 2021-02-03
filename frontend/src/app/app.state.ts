@@ -1,5 +1,5 @@
-import { Task } from './tasks/task.model';
+import { Persona } from './tasks/persona.model';
 
 export interface AppState {
-    readonly tasks: Task[];
+    readonly personas: Persona[];
 }
