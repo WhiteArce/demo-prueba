@@ -12,7 +12,7 @@ module.exports = (app) => {
   router.delete("/:id", personas.delete);
 
   //Actualizacion de datos de persona
-  router.get("/:id", personas.update);
+  router.put("/:id", personas.update);
 
   app.use("/", router);
 };

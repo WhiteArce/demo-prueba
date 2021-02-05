@@ -13,34 +13,35 @@
          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
        </div>
        <div class="modal-body">
-         <form>
+         <form #frmNewPersona="ngForm" (ngSubmit)="onNewPersona(frmNewPersona)"> 
             <div class="mb-3">
-               <label for="name">Nombre</label>
-               <input type="text" class="form-control" id="name" placeholder="Julian" required #nombre>
+               <label for="nombre">Nombre</label>
+               <input type="text" class="form-control" name="nombre" placeholder="Julian" ngModel required>
             </div>
             <div class="mb-3">
-               <label for="apellidoPat">Apellido paterno</label>
-               <input type="text" class="form-control" id="apellidoPat" placeholder="Montes" required #apellidoP>
+               <label for="apellidoP">Apellido paterno</label>
+               <input type="text" class="form-control" name="apellidoP" placeholder="Montes" ngModel required>
             </div>
             <div class="mb-3">
                <label for="apellidoM">Apellido materno</label>
-               <input type="text" class="form-control" id="apellidoM" placeholder="Escalante" required #apellidoM>
+               <input type="text" class="form-control" name="apellidoM" placeholder="Escalante" ngModel required>
             </div>
             <div class="mb-3">
-               <label for="address">Direccion</label>
-               <input type="text" class="form-control" id="address" placeholder="Avenida principal #700, col. centro" required #direccion>
+               <label for="direccion">Direccion</label>
+               <input type="text" class="form-control" name="direccion" placeholder="Avenida principal #700, col. centro" ngModel required>
             </div>
             <div class="mb-3">
-               <label for="phone">Telefono</label>
-               <input type="text" class="form-control" id="phone" placeholder="4268531973" required #telefono>
+               <label for="telefono">Telefono</label>
+               <input type="number" class="form-control" name="telefono" placeholder="4268531973" ngModel required>
             </div>
+            <div class="mb-3">
+               <button type="submit" class="btn btn-success">Guardar </button>
+               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+           
          </form>
        </div>
-       <div class="modal-footer">
-         <button class="btn btn-success" (click)="addPerson(nombre.value, apellidoP.value, apellidoM.value, direccion.value, telefono.value)" data-bs-dismiss="modal">Guardar </button>
-         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-        
-       </div>
+
      </div>
    </div>
  </div>

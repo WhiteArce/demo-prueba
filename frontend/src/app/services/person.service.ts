@@ -1,40 +1,34 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { IPersona } from '../tasks/persona.model';
 
-const URI = 'http://localhost:3000/home';
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class PersonService {
+    URL: string = 'http://localhost:3000'
     constructor(private http: HttpClient) { }
 
-    getAll(): Observable<any>{
-        return this.http.get(URI);
-    }
-    get(id): Observable<any> {
-        return this.http.get(`${URI}/${id}`);
+  
+
+    getPersonas(): Observable<any> {
+        return this.http.get<IPersona>(`${this.URL}`);
     }
 
-    create(data): Observable<any> {
-        return this.http.post(URI, data);
+    createPersona(persona: IPersona): Observable<any> {
+        return this.http.post<IPersona>(`${this.URL}`, persona);
     }
 
-    update(id, data): Observable<any> {
-        return this.http.put(`${URI}/${id}`,data);
+    deletePersona(id): Observable<any>{
+        return this.http.delete<IPersona>(`${this.URL}/${id}`);
     }
+
+     updatePersona(id, data: IPersona): Observable<any> {
+        return this.http.put<IPersona>(`${this.URL}/${id}`, data);
+     }
     
-    delete(id): Observable<any> {
-        return this.http.delete(`${URI}/${id}`);
-    }
 
-    deleteAll(): Observable<any> {
-        return this.http.delete(URI);
-    }
-
-    findByName(nombre): Observable<any> {
-        return this.http.get(`${URI}?nombre=${nombre}`);
-    }
 }

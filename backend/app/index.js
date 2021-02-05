@@ -5,17 +5,16 @@ const bodyParser = require("body-parser");
 const app = express();
 const router = express.Router();
 
-var corsOptions = {
-  origin: "http://localhost:8080",
-};
-
-app.use(cors(corsOptions));
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.json());
+const bodyParserJSON = bodyParser.json();
+const bodyParserURLEncoded = bodyParser.urlencoded({ extended: true });
+
+app.use(cors());
+app.use(bodyParserJSON);
+app.use(bodyParserURLEncoded);
 
 app.use("/", router);
-app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./models/index");
 db.sequelize.sync();
@@ -29,7 +28,7 @@ db.sequelize.sync();
 require("./routes/persona.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
